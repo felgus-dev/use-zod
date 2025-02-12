@@ -1,0 +1,54 @@
+{
+  "name": "use-zod",
+  "version": "0.1.0",
+  "main": "./dist/use-zod.cjs",
+  "module": "./dist/use-zod.mjs",
+  "types": "./dist/use-zod.d.ts",
+  "unpkg": "./dist/use-zod.js",
+  "exports": {
+    ".": {
+      "require": "./dist/use-zod.cjs",
+      "import": "./dist/use-zod.mjs",
+      "types": "./dist/use-zod.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && dts-bundle-generator --config ./bundle-generator.config.ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@vitest/coverage-v8": "^1.6.0",
+    "dts-bundle-generator": "^9.5.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-externalize-deps": "^0.9.0",
+    "vitest": "^1.6.0",
+    "zod": "^3.24.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felgus-dev/use-zod"
+  },
+  "keywords": [
+    "react",
+    "reactivity",
+    "utils"
+  ],
+  "author": "Felipe Gustavo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felgus-dev/use-zod/issues"
+  },
+  "homepage": "https://github.com/felgus-dev/use-zod#readme",
+  "files": [
+    "dist/**",
+    "package.json",
+    "README.md"
+  ]
+}
