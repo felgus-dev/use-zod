@@ -1,1 +1,1 @@
-export * from './use-zod';
+export * from './hooks/use-zod';
