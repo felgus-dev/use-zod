@@ -1,6 +1,6 @@
 {
   "name": "use-zod",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./dist/use-zod.cjs",
   "module": "./dist/use-zod.mjs",
   "types": "./dist/use-zod.d.ts",
