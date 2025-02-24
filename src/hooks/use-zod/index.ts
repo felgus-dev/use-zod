@@ -6,20 +6,20 @@ import { useStable } from "../../core/useStable"
 
 const createFactory = <T>(zodSchema:z.ZodType<T>, action: React.SetStateAction<T>, config?: Config): React.SetStateAction<T> => {
   return (prevState) => {
-    const possibleNewState = action instanceof Function ? action(prevState) : action;
+    const possibleNextState = action instanceof Function ? action(prevState) : action;
 
-    const result = zodSchema.safeParse(possibleNewState);
+    const result = zodSchema.safeParse(possibleNextState);
 
     if (!result.success) {
       if (typeof config?.onError === 'function') {
-        config?.onError(result?.error, prevState, possibleNewState);
+        config?.onError(result?.error, prevState, possibleNextState);
       }
       
       const isStrict = config?.strict ?? false;
-      return isStrict ? prevState : possibleNewState;
+      return isStrict ? prevState : possibleNextState;
     }
     
-    return result?.data || possibleNewState;  
+    return result?.data || possibleNextState;  
   };
 };
 
@@ -39,11 +39,6 @@ export const useZod = <T>(schema: z.ZodType<T>, initialState: z.infer<typeof sch
     
     setValue(factory)
   }, []);
-
-  React.useEffect(() => {
-    configStable.current = config;
-    schemaStable.current = schema;
-  });
 
   return [value, setter] as unknown as UseZodReturn<S>;
 };
